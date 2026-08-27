@@ -132,7 +132,7 @@ LUALIB_API int lua_amqp_session_new(lua_State *L) {
   fetch_connection_params(L);
 
   host = luaL_optstring(L, -1, DEFAULT_HOST);
-  port = luaL_optint (L, -2, DEFAULT_PORT);
+  port = luaL_optinteger (L, -2, DEFAULT_PORT);
   username = luaL_optstring(L, -3, DEFAULT_USERNAME);
   password = luaL_optstring(L, -4, DEFAULT_PASSWORD);
   vhost = luaL_optstring(L, -5, DEFAULT_VHOST);
@@ -141,11 +141,11 @@ LUALIB_API int lua_amqp_session_new(lua_State *L) {
   conn = amqp_new_connection();
 
   if (ssl) {
-    port = luaL_optint (L, -2, DEFAULT_SSL_PORT);
+    port = luaL_optinteger (L, -2, DEFAULT_SSL_PORT);
     cacert = luaL_checkstring(L, -7);
     cert = lua_tostring(L, -8);
     key = lua_tostring(L, -9);
-    timeout = luaL_optint (L, -10, DEFAULT_SSL_TIMEOUT);
+    timeout = luaL_optinteger (L, -10, DEFAULT_SSL_TIMEOUT);
     connect_ssl(L, conn, host, port, key, cert, cacert, 0, 0, timeout);
   } else {
     connect_regular(L, conn, host, port);

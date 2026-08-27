@@ -27,7 +27,7 @@ LUALIB_API int lua_amqp_channel_basic_qos(lua_State *L);
 
 LUALIB_API int lua_amqp_channel_free(lua_State *L);
 
-static const struct luaL_reg channel_reg[] = {
+static const struct luaL_Reg channel_reg[] = {
   { "exchange_declare", lua_amqp_channel_exchange_declare },
   { "exchange", lua_amqp_channel_exchange },
   { "ack",  lua_amqp_channel_basic_ack },

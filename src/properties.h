@@ -18,7 +18,7 @@ LUALIB_API int lua_amqp_properties_headers(lua_State *L);
 
 LUALIB_API int lua_amqp_properties_free(lua_State *L);
 
-static const struct luaL_reg properties_reg[] = {
+static const struct luaL_Reg properties_reg[] = {
   { "headers",  lua_amqp_properties_headers },
   { "__gc", lua_amqp_properties_free },
   { NULL, NULL }
