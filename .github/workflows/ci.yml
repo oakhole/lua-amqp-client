@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t amqp-client .
+
+      - name: Start RabbitMQ service
+        run: docker compose -f docker-compose.ci.yml up -d
+
+      - name: Run test suite
+        run: docker compose -f docker-compose.ci.yml run amqp-client /bin/bash -lc "luarocks make && ./tests/run_tests.sh"
+
+      - name: Teardown services
+        if: always()
+        run: docker compose -f docker-compose.ci.yml down -v

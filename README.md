@@ -1,5 +1,6 @@
 # Lua AMQP Client
 
+[![CI](https://github.com/oakhole/lua-amqp-client/actions/workflows/ci.yml/badge.svg)](https://github.com/oakhole/lua-amqp-client/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
@@ -135,18 +136,21 @@ conn:close()
 
 创建并建立与 RabbitMQ Broker 的会话连接。
 
-* **参数:** `params` (table 表)| 参数         | 类型    | 默认值 / 必填              | 说明                                         |
+* **参数:** `params` (table 表)
+
+  | 参数 | 类型 | 默认值 / 必填 | 说明 |
   | :----------- | :------ | :------------------------- | :------------------------------------------- |
-  | `host`     | string  | `"127.0.0.1"`            | 服务器地址或主机名                           |
-  | `port`     | number  | `5672` (SSL 为 `5671`) | 端口号                                       |
-  | `username` | string  | `"guest"`                | 登录用户名                                   |
-  | `password` | string  | `"guest"`                | 登录密码                                     |
-  | `vhost`    | string  | `"/"`                    | 虚拟主机                                     |
-  | `ssl`      | boolean | `false`                  | 是否启用 SSL/TLS                             |
-  | `cacert`   | string  | `ssl = true` 时必填      | CA 证书文件路径                              |
-  | `cert`     | string  | 可选                       | 客户端证书路径                               |
-  | `key`      | string  | 可选                       | 客户端私钥路径                               |
-  | `timeout`  | number  | `0`                      | SSL 连接超时时间（微秒，`0` 表示不设超时） |
+  | `host` | string | `"127.0.0.1"` | 服务器地址或主机名 |
+  | `port` | number | `5672` (SSL 为 `5671`) | 端口号 |
+  | `username` | string | `"guest"` | 登录用户名 |
+  | `password` | string | `"guest"` | 登录密码 |
+  | `vhost` | string | `"/"` | 虚拟主机 |
+  | `ssl` | boolean | `false` | 是否启用 SSL/TLS |
+  | `cacert` | string | `ssl = true` 时必填 | CA 证书文件路径 |
+  | `cert` | string | 可选 | 客户端证书路径 |
+  | `key` | string | 可选 | 客户端私钥路径 |
+  | `timeout` | number | `0` | SSL 连接超时时间（微秒，`0` 表示不设超时） |
+
 * **返回值:** `conn` (连接会话对象 userdata)。
 
 ### 2. `conn:open_channel()`
